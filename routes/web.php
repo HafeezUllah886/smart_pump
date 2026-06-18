@@ -6,6 +6,7 @@ use Illuminate\Support\Facades\Route;
 require __DIR__.'/products_mgmt.php';
 require __DIR__.'/finance.php';
 require __DIR__.'/settings.php';
+require __DIR__.'/purchase.php';
 
 // Login routes
 Route::get('/login', [AuthController::class, 'showLoginForm'])->name('login');

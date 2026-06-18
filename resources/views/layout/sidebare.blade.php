@@ -128,7 +128,9 @@
                  <ul class="main-menu {{ $activeMenu == 'purchasePage' ? 'active' : '' }}" id="purchasePage"
                      style="display: {{ $activeMenu == 'purchasePage' ? 'block' : 'none' }};">
                      <li class="no-sub"><a href="#">Create Purchase</a></li>
-                     <li class="no-sub"><a href="#">Purchase History</a></li>
+                     <li class="no-sub {{ $routeName == 'purchase.index' ? 'active' : '' }}"><a
+                             href="{{ route('purchase.index') }}"
+                             class="{{ $routeName == 'purchase.index' ? 'active' : '' }}">Purchase History</a></li>
                  </ul>
 
                  <!-- Finance -->
