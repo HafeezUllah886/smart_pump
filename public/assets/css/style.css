@@ -30335,7 +30335,7 @@ body.dark .app-form select option selected {
 }
 
 .auth-container {
-  background-image: url(01eb22ee2bc7e61eca81.png);
+  background-image: url(../images/01eb22ee2bc7e61eca81.png);
   background-size: cover;
   background-repeat: no-repeat;
   background-position: center;
@@ -30361,7 +30361,7 @@ body.dark .app-form select option selected {
 }
 .auth-container .form-container {
   border: none;
-  background-image: url(7dd0b943bdbff2a2a129.png);
+  background-image: url(../images/7dd0b943bdbff2a2a129.png);
   background-repeat: no-repeat;
   background-position: top;
   box-shadow: none;

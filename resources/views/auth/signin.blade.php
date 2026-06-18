@@ -47,7 +47,7 @@
 
                 <div class="text-center pt-3">
                     <span class="h-100 w-80 overflow-hidden d-flex-center b-r-10 mx-auto p-2 auth-logo">
-                        <img src="../assets/images/logo.png" alt="User" class="img-fluid">
+                        <img src="{{ asset('assets/images/logo.png') }}" alt="User" class="img-fluid">
                     </span>
                     <h3 class="f-w-600 mb-0 pt-3">
                         Sign <span class="text-primary">In</span>
