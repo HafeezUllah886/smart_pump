@@ -1,7 +1,6 @@
 ﻿@extends('layout.app')
 @section('content')
     <div class="row">
-        <!-- Default Datatable start -->
         <div class="col-12">
             <div class="card ">
                 <div class="card-header d-flex justify-content-between">
@@ -14,7 +13,7 @@
                         <table class="display app-data-table default-data-table" id="defaultDatatable">
                             <thead>
                                 <tr>
-                                    <th width="10px">#</th>
+                                    <th style="width: 10px;">#</th>
                                     <th class="text-start">Inv #</th>
                                     <th class="text-start">Date</th>
                                     <th class="text-start">Supplier</th>
@@ -25,13 +24,13 @@
                             <tbody>
                                 @foreach ($purchases as $key => $purchase)
                                     <tr>
-                                        <td class="text-dark">{{ $key + 1 }}</td>
+                                        <td class="text-dark" style="width: 10px;">{{ $key + 1 }}</td>
                                         <td class="text-start">{{ $purchase->inv }}</td>
                                         <td class="text-start">{{ date('d-m-Y', strtotime($purchase->date)) }}</td>
                                         <td class="text-start">{{ $purchase->supplier->title }}</td>
                                         <td class="text-end">{{ number_format($purchase->total, 2) }}</td>
 
-                                        <td>
+                                        <td class="text-center">
                                             <div class="dropdown">
                                                 <button class="btn btn-primary btn-sm px-2" type="button"
                                                     data-bs-toggle="dropdown" aria-expanded="false">
@@ -39,14 +38,17 @@
                                                 </button>
                                                 <ul class="dropdown-menu dropdown-menu-end">
                                                     <li><a class="dropdown-item"
-                                                            href="{{ route('purchases.show', $purchase->id) }}"><i
+                                                            href="{{ route('purchase.show', $purchase->id) }}"><i
                                                                 class="ti ti-eye me-2 text-secondary"></i> View</a></li>
                                                     <li><a class="dropdown-item"
-                                                            href="{{ route('purchases.edit', $purchase->id) }}"><i
+                                                            href="{{ route('purchase.edit', $purchase->id) }}"><i
                                                                 class="ti ti-edit me-2 text-secondary"></i> Edit</a></li>
-                                                    <li><a class="dropdown-item text-danger"
-                                                            href="{{ route('purchases.edit', $purchase->id) }}"><i
-                                                                class="ti ti-trash me-2 text-danger"></i> Delete</a></li>
+                                                    <li>
+                                                        <a class="dropdown-item text-danger"
+                                                            href="{{ route('purchases.delete', $purchase->id) }}"><i
+                                                                class="ti ti-trash me-2 text-danger"></i>
+                                                            Delete</a>
+                                                    </li>
                                                 </ul>
                                             </div>
                                         </td>

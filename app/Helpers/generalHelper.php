@@ -35,17 +35,16 @@ function lastDayOfMonth()
     return $endOfMonth->format('Y-m-d');
 }
 
-function createStock($id, $cr, $db, $date, $notes, $ref, $warehouse)
+function createStock($id, $cr, $db, $date, $notes, $ref)
 {
     stock::create(
         [
-            'productID' => $id,
+            'product_id' => $id,
             'cr' => $cr,
             'db' => $db,
             'date' => $date,
             'notes' => $notes,
             'refID' => $ref,
-            'warehouseID' => $warehouse,
         ]
     );
 }

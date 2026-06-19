@@ -6,7 +6,7 @@ function createTransaction($accountID, $date, $cr, $db, $notes, $ref)
 {
     transactions::create(
         [
-            'accountID' => $accountID,
+            'account_id' => $accountID,
             'date' => $date,
             'cr' => $cr,
             'db' => $db,

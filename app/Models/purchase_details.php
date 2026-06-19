@@ -8,16 +8,11 @@ use Illuminate\Database\Eloquent\Model;
 class purchase_details extends Model
 {
     use HasFactory;
+
     protected $guarded = [];
 
     public function product()
     {
-        return $this->belongsTo(products::class, 'productID');
+        return $this->belongsTo(products::class, 'product_id');
     }
-
-    public function warehouse()
-    {
-        return $this->belongsTo(warehouses::class, 'warehouseID');
-    }
-
 }
