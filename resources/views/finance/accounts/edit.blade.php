@@ -5,30 +5,22 @@
         <div class="col-12">
             <div class="card ">
                 <div class="card-header d-flex justify-content-between">
-                    <h5>Create Account</h5>
+                    <h5>Edit Account</h5>
                 </div>
                 <div class="card-body">
                     <div class="app-datatable-default overflow-auto app-scroll">
-                        <form action="{{ route('account.store') }}" method="post">
+                        <form action="{{ route('account.update', $account->id) }}" method="post">
                             @csrf
+                            @method('PUT')
                             <div class="row">
                                 <div class="col-12">
                                     <div class="form-group">
                                         <label for="title">Account Title</label>
-                                        <input type="text" name="title" id="title" value="{{ old('title') }}"
+                                        <input type="text" name="title" id="title" value="{{ $account->title }}"
                                             class="form-control">
                                     </div>
                                 </div>
-                                <div class="col-12">
-                                    <div class="form-group mt-2">
-                                        <label for="type">Type</label>
-                                        <select name="type" id="type" class="form-control">
-                                            <option value="Business">Business</option>
-                                            <option value="Customer">Customer</option>
-                                            <option value="Supplier">Supplier</option>
-                                        </select>
-                                    </div>
-                                </div>
+
                                 <div class="col-12 mt-2" id="catBox">
                                     <div class="form-group">
                                         <label for="category">Category</label>
@@ -40,24 +32,34 @@
                                     </div>
                                 </div>
 
+
                                 <div class="col-6 mt-2 customer">
                                     <div class="form-group">
                                         <label for="contact">Contact #</label>
-                                        <input type="text" name="contact" id="contact" value="{{ old('contact') }}"
+                                        <input type="text" name="contact" id="contact" value="{{ $account->contact }}"
                                             class="form-control">
                                     </div>
                                 </div>
                                 <div class="col-6 mt-2 customer">
                                     <div class="form-group">
                                         <label for="address">Address</label>
-                                        <input type="text" name="address" id="address" value="{{ old('address') }}"
+                                        <input type="text" name="address" id="address" value="{{ $account->address }}"
                                             class="form-control">
+                                    </div>
+                                </div>
+                                <div class="col-12 mt-2">
+                                    <div class="form-group">
+                                        <label for="is_active">Status</label>
+                                        <select name="is_active" id="is_active" class="form-control">
+                                            <option value="1" @selected($account->is_active)>Active</option>
+                                            <option value="0" @selected(!$account->is_active)>Inactive</option>
+                                        </select>
                                     </div>
                                 </div>
 
 
                                 <div class="col-12 mt-3">
-                                    <button type="submit" class="btn btn-secondary w-100">Create</button>
+                                    <button type="submit" class="btn btn-secondary w-100">Update</button>
                                 </div>
                         </form>
                     </div>
@@ -78,7 +80,9 @@
 @section('page-js')
     <script>
         $(".customer").hide();
-        $("#type").on("change", function() {
+        checkType();
+
+        function checkType() {
             var type = $("#type").find(":selected").val();
 
             if (type === "Business") {
@@ -92,7 +96,7 @@
             } else {
                 $(".customer").hide();
             }
-        });
+        }
     </script>
 @endsection
 @endsection

@@ -18,13 +18,11 @@
                             </div>
                             <div class="col-sm-6 text-sm-end mt-3 mt-sm-0">
                                 <div class="mb-2">
-                                    <h5 class="text-primary f-w-700 mb-2">PURCHASE RECEIPT</h5>
+                                    <h5 class="text-primary f-w-700 mb-2">SALE RECEIPT</h5>
                                     <p class="mb-1 text-dark-800">Receipt No. <strong
-                                            class="text-dark">#{{ $purchase->id }}</strong></p>
-                                    <p class="mb-1 text-dark-800">Invoice No. <strong
-                                            class="text-dark">{{ $purchase->inv ?? 'N/A' }}</strong></p>
+                                            class="text-dark">#{{ $sale->id }}</strong></p>
                                     <p class="mb-0 text-dark-800">Date <strong
-                                            class="text-dark">{{ date('d M Y', strtotime($purchase->date)) }}</strong></p>
+                                            class="text-dark">{{ date('d M Y', strtotime($sale->date)) }}</strong></p>
                                 </div>
                             </div>
                         </div>
@@ -35,17 +33,27 @@
                         <!-- Purchased From Details -->
                         <div class="row align-items-start mb-3 py-2">
                             <div class="col-sm-6">
-                                <p class="text-muted f-s-11 text-uppercase f-w-600 mb-1 letter-spacing-1">Purchased From</p>
-                                <h6 class="text-dark f-w-700 mb-1">{{ $purchase->supplier->title }}</h6>
+                                <p class="text-muted f-s-11 text-uppercase f-w-600 mb-1 letter-spacing-1">Sale Type / Sold
+                                    To</p>
+                                <h6 class="text-dark f-w-700 mb-1">{{ $sale->customer->title }}</h6>
                                 <address class="mb-0 text-muted f-s-13">
-                                    {{ $purchase->supplier->address }} | {{ $purchase->supplier->contact }}
+                                    {{ $sale->customer->address }} | {{ $sale->customer->contact }}
                                 </address>
                             </div>
-                            {{-- <div class="col-sm-6 text-sm-end mt-2 mt-sm-0">
+                            <div class="col-sm-6 text-sm-end mt-2 mt-sm-0">
                                 <p class="text-muted f-s-11 text-uppercase f-w-600 mb-1 letter-spacing-1">Payment Info</p>
-                                <p class="mb-1 f-s-13 text-dark-800">Status <strong class="badge bg-success-light text-success ms-1">Paid</strong></p>
-                                <p class="mb-0 f-s-13 text-dark-800">Total Amount <strong class="text-primary f-w-700">{{ number_format($purchase->total, 2) }}</strong></p>
-                            </div> --}}
+                                @if ($sale->payments->count() > 0)
+                                    @foreach ($sale->payments as $payment)
+                                        <p class="mb-1 f-s-13 text-dark-800">{{ number_format($payment->amount, 2) }}
+                                            <strong
+                                                class="badge bg-success-light text-success ms-1">{{ $payment->account->title }}</strong>
+                                            {{ $payment->notes }}
+                                        </p>
+                                    @endforeach
+                                @else
+                                    <p class="mb-1 f-s-13 text-dark-800">Up Paid</p>
+                                @endif
+                            </div>
                         </div>
 
                         <!-- Divider -->
@@ -65,7 +73,7 @@
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    @foreach ($purchase->details as $item)
+                                    @foreach ($sale->details as $item)
                                         <tr>
                                             <td>{{ $loop->iteration }}</td>
                                             <td class="f-w-600 text-dark">{{ $item->product->name }}</td>
@@ -81,18 +89,29 @@
                                     <tr class="table-light f-w-700 text-dark">
                                         <td colspan="5" class="text-end border-top">Grand Total</td>
                                         <td class="text-end text-primary f-w-700 border-top f-s-16">
-                                            {{ number_format($purchase->total, 2) }}</td>
+                                            {{ number_format($sale->total, 2) }}</td>
                                     </tr>
                                 </tfoot>
                             </table>
                         </div>
                     </div>
+                    <div class="card-footer p-4">
+                        <div class="row">
+                            <div class="col-lg-6 col-md-6 col-sm-6"></div>
+                            <div class="col-lg-6 col-md-6 col-sm-6 text-end"><strong class="text-dark">Notes</strong>
+                                {{ $sale->notes }}
+                            </div>
+                        </div>
+                    </div>
                 </div>
-                <div class="invoice-footer float-end mb-3">
-                    <button class="btn btn-primary m-1" onclick="window.print()" type="button"><i
-                            class="ti ti-printer"></i> Print
-                    </button>
-                </div>
+                @if ($sale->nots)
+                    <div class="invoice-footer float-end mb-3">
+                        <button class="btn btn-primary m-1" onclick="window.print()" type="button"><i
+                                class="ti ti-printer"></i> Print
+                        </button>
+                    </div>
+                @endif
+
             </div>
         </div>
     </div>

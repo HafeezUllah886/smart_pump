@@ -116,23 +116,26 @@ class AccountsController extends Controller
     {
         $request->validate(
             [
-                'title' => 'required|unique:accounts,title,'.$request->accountID,
+                'title' => 'required|unique:accounts,title,'.$account->id,
             ],
             [
                 'title.required' => 'Please Enter Account Title',
                 'title.unique' => 'Account with this title already exists',
             ]
         );
-        $account = accounts::find($request->accountID)->update(
+        $type = $account->type;
+
+        $account = accounts::find($account->id)->update(
             [
                 'title' => $request->title,
                 'category' => $request->category,
                 'contact' => $request->contact ?? null,
                 'address' => $request->address ?? null,
+                'is_active' => $request->is_active,
             ]
         );
 
-        return redirect()->route('accounts.index', $request->type)->with('success', 'Account Updated');
+        return redirect()->route('account.index', $type)->with('success', 'Account Updated');
     }
 
     /**

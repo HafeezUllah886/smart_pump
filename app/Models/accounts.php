@@ -24,7 +24,6 @@ class accounts extends Model
     public function scopeSupplier($query)
     {
         return $query->where('type', 'Supplier');
-
     }
 
     public function transactions()

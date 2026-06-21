@@ -23,7 +23,7 @@ class accountSeeder extends Seeder
 
         accounts::create(
             [
-                'title' => 'Walk-In Customer',
+                'title' => 'Daily Sale',
                 'type' => 'Customer',
 
             ]

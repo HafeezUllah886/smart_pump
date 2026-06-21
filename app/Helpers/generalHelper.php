@@ -118,10 +118,20 @@ function productStockValue($id)
 
 function projectName()
 {
-    return 'WAKEEL TRADERS';
+    return 'KHAN PETROLEUM, QUETTA';
 }
 
 function projectNameShort()
 {
-    return 'WT';
+    return 'KP';
+}
+
+function addressLineOne()
+{
+    return 'Mashriqi Bypass';
+}
+
+function addressLineTwo()
+{
+    return 'Quetta';
 }

@@ -2,7 +2,7 @@
      <div class="semi-side-nav">
          <div class="py-4">
              <span class="bg-white h-40 w-40 d-flex-center b-r-12 mx-auto">
-                 <span class="f-w-600">SKB</span>
+                 <span class="f-w-600">{{ projectNameShort() }}</span>
              </span>
          </div>
          @php
@@ -118,10 +118,12 @@
                  <!-- Sale -->
                  <ul class="main-menu {{ $activeMenu == 'salePage' ? 'active' : '' }}" id="salePage"
                      style="display: {{ $activeMenu == 'salePage' ? 'block' : 'none' }};">
-                     <li class="no-sub"><a href="#">Shift Closing</a></li>
-                     <li class="no-sub"><a href="#">Closing History</a></li>
-                     <li class="no-sub"><a href="#">Credit Sales</a></li>
-                     <li class="no-sub"><a href="#">Sales History</a></li>
+                     <li class="no-sub {{ $routeName == 'sale.create' ? 'active' : '' }}"><a
+                             href="{{ route('sale.create') }}"
+                             class="{{ $routeName == 'sale.create' ? 'active' : '' }}">Create Sales</a></li>
+                     <li class="no-sub {{ $routeName == 'sale.index' ? 'active' : '' }}"><a
+                             href="{{ route('sale.index') }}"
+                             class="{{ $routeName == 'sale.index' ? 'active' : '' }}">Sales History</a></li>
                  </ul>
 
                  <!-- Purchase -->
@@ -153,10 +155,20 @@
                              href="{{ route('account.index', ['filter' => 'Supplier']) }}"
                              class="{{ request('filter') == 'Supplier' ? 'active' : '' }}">Supplier
                              Accounts</a></li>
-                     <li class="no-sub"><a href="#">Receive Payments</a></li>
-                     <li class="no-sub"><a href="#">Issue Payments</a></li>
-                     <li class="no-sub"><a href="#">Transfers</a></li>
-                     <li class="no-sub"><a href="#">Accounts Adjustment</a></li>
+                     <li class="no-sub {{ $routeName == 'receivings.index' ? 'active' : '' }}"><a
+                             href="{{ route('receivings.index') }}"
+                             class="{{ $routeName == 'receivings.index' ? 'active' : '' }}">Receive
+                             Payments</a></li>
+                     <li class="no-sub {{ $routeName == 'issue.index' ? 'active' : '' }}"><a
+                             href="{{ route('issue.index') }}"
+                             class="{{ $routeName == 'issue.index' ? 'active' : '' }}">Issue Payments</a></li>
+                     <li class="no-sub {{ $routeName == 'transfers.index' ? 'active' : '' }}"><a
+                             href="{{ route('transfers.index') }}"
+                             class="{{ $routeName == 'transfers.index' ? 'active' : '' }}">Transfers</a></li>
+                     <li class="no-sub {{ $routeName == 'adjustments.index' ? 'active' : '' }}"><a
+                             href="{{ route('adjustments.index') }}"
+                             class="{{ $routeName == 'adjustments.index' ? 'active' : '' }}">Accounts
+                             Adjustment</a></li>
                      <li class="no-sub"><a href="#">Expenses</a></li>
                  </ul>
 
