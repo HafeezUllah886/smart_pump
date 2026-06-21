@@ -98,7 +98,7 @@ class AccountsController extends Controller
 
         $cur_balance = $cur_cr - $cur_db;
 
-        return view('finance.accounts.statment', compact('account', 'transactions', 'pre_balance', 'cur_balance', 'from', 'to'));
+        return view('finance.accounts.statement', compact('account', 'transactions', 'pre_balance', 'cur_balance', 'from', 'to'));
     }
 
     /**

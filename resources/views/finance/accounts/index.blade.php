@@ -59,21 +59,22 @@
                                                     <form action="{{ route('account.show', $account->id) }}"
                                                         method="get">
                                                         @csrf
+                                                        <input type="hidden" name="id" value="{{ $account->id }}">
                                                         <div class="modal-body">
                                                             <div class="row">
                                                                 <div class="col-md-6">
                                                                     <div class="form-group mt-2">
                                                                         <label for="from_date">From Date</label>
-                                                                        <input type="date" name="from_date" required
-                                                                            value="{{ firstDayOfMonth() }}" id="from_date"
+                                                                        <input type="date" name="from" required
+                                                                            value="{{ firstDayOfMonth() }}" id="from"
                                                                             class="form-control">
                                                                     </div>
                                                                 </div>
                                                                 <div class="col-md-6">
                                                                     <div class="form-group mt-2">
                                                                         <label for="to_date">To Date</label>
-                                                                        <input type="date" name="to_date" required
-                                                                            value="{{ date('Y-m-d') }}" id="to_date"
+                                                                        <input type="date" name="to" required
+                                                                            value="{{ date('Y-m-d') }}" id="to"
                                                                             class="form-control">
                                                                     </div>
                                                                 </div>
