@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\confirmPasswordController;
+use App\Http\Controllers\DashboardController;
 use Illuminate\Support\Facades\Route;
 
 require __DIR__.'/products_mgmt.php';
@@ -20,8 +21,6 @@ Route::middleware('auth')->group(function () {
     Route::get('/confirm-password', [confirmPasswordController::class, 'showConfirmPasswordForm'])->name('confirm-password');
     Route::post('/confirm-password', [confirmPasswordController::class, 'confirmPassword']);
 
-    Route::get('/', function () {
-        return view('index');
-    })->name('dashboard');
+    Route::get('/', [DashboardController::class, 'index'])->name('dashboard');
 
 });

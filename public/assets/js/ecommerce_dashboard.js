@@ -109,7 +109,9 @@ const options = {
     ]
 };
 
-new ApexCharts(document.querySelector("#eco-chart"), options).render();
+if (document.querySelector("#eco-chart")) {
+    new ApexCharts(document.querySelector("#eco-chart"), options).render();
+}
 
 
 const reachChartOptions = {
@@ -175,11 +177,13 @@ const reachChartOptions = {
     },
 };
 
-const chart = new ApexCharts(
-    document.querySelector("#reachChart"),
-    reachChartOptions
-);
-chart.render();
+if (document.querySelector("#reachChart")) {
+    const chart = new ApexCharts(
+        document.querySelector("#reachChart"),
+        reachChartOptions
+    );
+    chart.render();
+}
 
 
 $(document).ready(function () {

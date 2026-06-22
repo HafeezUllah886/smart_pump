@@ -194,7 +194,10 @@
                  <!-- Reports -->
                  <ul class="main-menu {{ $activeMenu == 'reportsPage' ? 'active' : '' }}" id="reportsPage"
                      style="display: {{ $activeMenu == 'reportsPage' ? 'block' : 'none' }};">
-                     <li class="no-sub"><a href="#">Profit / Loss Report</a></li>
+                     <li class="no-sub {{ $routeName == 'reports.profit_loss' ? 'active' : '' }}">
+                         <a href="{{ route('reports.profit_loss') }}"
+                             class="{{ $routeName == 'reports.profit_loss' ? 'active' : '' }}">Profit / Loss Report</a>
+                     </li>
                      <li class="no-sub"><a href="#">Daily Cashbook</a></li>
                      <li class="no-sub"><a href="#">Expenses Report</a></li>
                  </ul>
