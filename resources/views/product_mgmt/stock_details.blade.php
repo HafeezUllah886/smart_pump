@@ -18,7 +18,7 @@
                             </div>
                             <div class="col-sm-6 text-sm-end mt-3 mt-sm-0">
                                 <div class="mb-2">
-                                    <h5 class="text-primary f-w-700 mb-2">Account Statement</h5>
+                                    <h5 class="text-primary f-w-700 mb-2">Stock Details</h5>
                                     <p class="mb-1 text-dark-800">From: <strong
                                             class="text-dark">{{ date('d M Y', strtotime($from)) }}</strong></p>
                                     <p class="mb-1 text-dark-800">To: <strong
@@ -34,25 +34,13 @@
                         <!-- Purchased From Details -->
                         <div class="row align-items-start mb-3 py-2">
                             <div class="col-sm-6">
-                                <p class="text-muted f-s-11 text-uppercase f-w-600 mb-1 letter-spacing-1">Account Details
+                                <p class="text-muted f-s-11 text-uppercase f-w-600 mb-1 letter-spacing-1">Product Details
                                 </p>
-                                <h6 class="text-dark f-w-700 mb-1">{{ $account->title }}</h6>
+                                <h6 class="text-dark f-w-700 mb-1">{{ $product->name }}</h6>
                                 <address class="mb-0 text-muted f-s-13">
-                                    Type: <span class="text-dark">{{ $account->type }}</span>
-                                    <br>
-                                    {{ $account->address }} | {{ $account->contact }}
+                                    Unit: <span class="text-dark">{{ $product->unit }}</span>
                                 </address>
                             </div>
-                            {{--  <div class="col-sm-6">
-                                <p class="text-muted f-s-11 text-uppercase f-w-600 mb-1 letter-spacing-1">Balance
-                                </p>
-                                <p class="text-dark f-w-700 mb-1">
-                                    <strong>Opening: </strong> {{ number_format($pre_balance, 2) }}
-                                </p>
-                                <p class="text-dark f-w-700 mb-1">
-                                    <strong>Closing: </strong> {{ number_format($cur_balance, 2) }}
-                                </p>
-                            </div> --}}
                         </div>
 
                         <!-- Divider -->
@@ -82,7 +70,7 @@
                                         <td class="text-end text-dark fs-6 fw-bold p-1">{{ number_format($pre_balance, 2) }}
                                         </td>
                                     </tr>
-                                    @foreach ($transactions as $item)
+                                    @foreach ($stocks as $item)
                                         @php
                                             $balance = $balance + $item->cr - $item->db;
                                         @endphp

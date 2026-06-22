@@ -50,7 +50,7 @@ function createStock($id, $cr, $db, $date, $notes, $ref)
 }
 function getStock($id)
 {
-    $stocks = stock::where('productID', $id)->get();
+    $stocks = stock::where('product_id', $id)->get();
     $balance = 0;
     foreach ($stocks as $stock) {
         $balance += $stock->cr;
@@ -62,7 +62,7 @@ function getStock($id)
 
 function avgSalePrice($from, $to, $id)
 {
-    $sales = sale_details::where('productID', $id);
+    $sales = sale_details::where('product_id', $id);
     if ($from != 'all' && $to != 'all') {
         $sales->whereBetween('date', [$from, $to]);
     }
@@ -80,7 +80,7 @@ function avgSalePrice($from, $to, $id)
 
 function avgPurchasePrice($from, $to, $id)
 {
-    $purchases = purchase_details::where('productID', $id);
+    $purchases = purchase_details::where('product_id', $id);
     if ($from != 'all' && $to != 'all') {
         $purchases->whereBetween('date', [$from, $to]);
     }

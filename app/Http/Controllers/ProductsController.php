@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\products;
+use App\Models\stock;
 use Illuminate\Http\Request;
 
 class ProductsController extends Controller
@@ -44,12 +45,32 @@ class ProductsController extends Controller
         return back()->with('success', 'Product Created');
     }
 
-    /**
-     * Display the specified resource.
-     */
-    public function show(products $products)
+    public function stocks()
     {
-        //
+        $products = products::active()->get();
+
+        return view('product_mgmt.stock', compact('products'));
+    }
+
+    public function show(Request $request)
+    {
+        $product = products::find($request->id);
+        $id = $product->id;
+        $from = $request->from;
+        $to = $request->to;
+
+        $stocks = stock::where('product_id', $id)->whereBetween('date', [$from, $to])->get();
+
+        $pre_cr = stock::where('product_id', $id)->whereDate('date', '<', $from)->sum('cr');
+        $pre_db = stock::where('product_id', $id)->whereDate('date', '<', $from)->sum('db');
+
+        $cur_cr = stock::where('product_id', $id)->sum('cr');
+        $cur_db = stock::where('product_id', $id)->sum('db');
+
+        $pre_balance = $pre_cr - $pre_db;
+        $cur_balance = $cur_cr - $cur_db;
+
+        return view('product_mgmt.stock_details', compact('product', 'pre_balance', 'cur_balance', 'stocks', 'from', 'to'));
     }
 
     /**
