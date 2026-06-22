@@ -2,7 +2,7 @@
 @section('content')
     <div class="row">
         <!-- Default Datatable start -->
-        <div class="col-4 mx-auto">
+        <div class="col-md-4 mx-auto">
             <div class="card ">
                 <div class="card-header d-flex justify-content-between">
                     <h5>Daily Cash Book Report</h5>
