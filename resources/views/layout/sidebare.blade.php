@@ -194,23 +194,31 @@
                  <!-- Reports -->
                  <ul class="main-menu {{ $activeMenu == 'reportsPage' ? 'active' : '' }}" id="reportsPage"
                      style="display: {{ $activeMenu == 'reportsPage' ? 'block' : 'none' }};">
-                     <li class="no-sub {{ $routeName == 'reports.profit_loss' ? 'active' : '' }}">
+                     <li
+                         class="no-sub {{ $routeName == 'reportProfitDetails' || $routeName == 'reports.profit_loss' ? 'active' : '' }}">
                          <a href="{{ route('reports.profit_loss') }}"
-                             class="{{ $routeName == 'reports.profit_loss' ? 'active' : '' }}">Profit / Loss Report</a>
+                             class="{{ $routeName == 'reportProfitDetails' || $routeName == 'reports.profit_loss' ? 'active' : '' }}">Profit
+                             / Loss
+                             Report</a>
                      </li>
-                     <li class="no-sub"><a href="#">Daily Cashbook</a></li>
+                     <li
+                         class="no-sub {{ $routeName == 'reportCashbook' || $routeName == 'reportCashbookData' ? 'active' : '' }}">
+                         <a href="{{ route('reportCashbook') }}"
+                             class="{{ $routeName == 'reportCashbook' || $routeName == 'reportCashbookData' ? 'active' : '' }}">Daily
+                             Cashbook</a>
+                     </li>
                      <li class="no-sub"><a href="#">Expenses Report</a></li>
                  </ul>
 
                  <!-- Settings -->
                  <ul class="main-menu {{ $activeMenu == 'settingsPage' ? 'active' : '' }}" id="settingsPage"
                      style="display: {{ $activeMenu == 'settingsPage' ? 'block' : 'none' }};">
-                     <li class="no-sub"><a href="#">Profile</a></li>
+                     <li class="no-sub {{ $routeName == 'profile' ? 'active' : '' }}"><a href="{{ route('profile') }}" class="{{ $routeName == 'profile' ? 'active' : '' }}">Profile</a></li>
                      <li class="no-sub {{ $routeName == 'attendants.index' ? 'active' : '' }}"><a
                              href="{{ route('attendants.index') }}"
                              class="{{ $routeName == 'attendants.index' ? 'active' : '' }}">Pump Attendants</a></li>
-                     <li class="no-sub"><a href="#">Users</a></li>
-                     <li class="no-sub"><a href="#">Logout</a></li>
+                     {{--   <li class="no-sub"><a href="#">Users</a></li> --}}
+                     <li class="no-sub"><a href="{{ route('logout') }}">Logout</a></li>
                  </ul>
              </div>
          </div>

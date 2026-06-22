@@ -10,6 +10,7 @@ require __DIR__.'/finance.php';
 require __DIR__.'/settings.php';
 require __DIR__.'/purchase.php';
 require __DIR__.'/sale.php';
+require __DIR__.'/reports.php';
 
 // Login routes
 Route::get('/login', [AuthController::class, 'showLoginForm'])->name('login');

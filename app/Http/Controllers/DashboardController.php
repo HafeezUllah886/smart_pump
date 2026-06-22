@@ -21,7 +21,7 @@ class DashboardController extends Controller
         $businessBalance = myBalance();
         $stockVal = stockValue();
         $customerReceivables = customerBalance();
-        $supplierPayables = vendorBalance();
+        $supplierPayables = supplierBalance();
 
         // 2. Calculate current month statistics
         $currentMonthSales = sale_details::whereYear('date', $now->year)

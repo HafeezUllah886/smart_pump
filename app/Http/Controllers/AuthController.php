@@ -66,4 +66,26 @@ class AuthController extends Controller
 
         return redirect('/login')->with('success', __('auth.logged_out'));
     }
+
+    public function profile()
+    {
+        return view('profile.index');
+    }
+
+    public function updateProfile(Request $request)
+    {
+        $request->validate([
+            'username' => 'required|string|unique:users,username,' . Auth::id(),
+            'password' => 'nullable|string|min:4',
+        ]);
+
+        $user = User::find(Auth::id());
+        $user->username = $request->username;
+        if ($request->password) {
+            $user->password = Hash::make($request->password);
+        }
+        $user->save();
+
+        return back()->with('success', 'Profile updated successfully');
+    }
 }

@@ -20,6 +20,7 @@ class DatabaseSeeder extends Seeder
             AdminUserSeeder::class,
             accountSeeder::class,
             productsSeeder::class,
+            ExpenseCategoriesSeeder::class,
         ]);
     }
 }
