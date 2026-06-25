@@ -207,13 +207,20 @@
                              class="{{ $routeName == 'reportCashbook' || $routeName == 'reportCashbookData' ? 'active' : '' }}">Daily
                              Cashbook</a>
                      </li>
-                     <li class="no-sub"><a href="#">Expenses Report</a></li>
+                     <li
+                         class="no-sub {{ $routeName == 'reportExpense' || $routeName == 'reportExpenseData' ? 'active' : '' }}">
+                         <a href="{{ route('reportExpense') }}"
+                             class="{{ $routeName == 'reportExpense' || $routeName == 'reportExpenseData' ? 'active' : '' }}">Expenses
+                             Report</a>
+                     </li>
                  </ul>
 
                  <!-- Settings -->
                  <ul class="main-menu {{ $activeMenu == 'settingsPage' ? 'active' : '' }}" id="settingsPage"
                      style="display: {{ $activeMenu == 'settingsPage' ? 'block' : 'none' }};">
-                     <li class="no-sub {{ $routeName == 'profile' ? 'active' : '' }}"><a href="{{ route('profile') }}" class="{{ $routeName == 'profile' ? 'active' : '' }}">Profile</a></li>
+                     <li class="no-sub {{ $routeName == 'profile' ? 'active' : '' }}"><a
+                             href="{{ route('profile') }}"
+                             class="{{ $routeName == 'profile' ? 'active' : '' }}">Profile</a></li>
                      <li class="no-sub {{ $routeName == 'attendants.index' ? 'active' : '' }}"><a
                              href="{{ route('attendants.index') }}"
                              class="{{ $routeName == 'attendants.index' ? 'active' : '' }}">Pump Attendants</a></li>

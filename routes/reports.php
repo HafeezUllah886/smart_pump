@@ -1,7 +1,7 @@
 <?php
 
 use App\Http\Controllers\dailycashbookController;
-use App\Http\Controllers\ledgerReportController;
+use App\Http\Controllers\ExpenseReportController;
 use App\Http\Controllers\profitController;
 use Illuminate\Support\Facades\Route;
 
@@ -13,7 +13,6 @@ Route::middleware('auth')->group(function () {
     Route::get('/reports/dailycashbook', [dailycashbookController::class, 'index'])->name('reportCashbook');
     Route::get('/reports/dailycashbook-data', [dailycashbookController::class, 'details'])->name('reportCashbookData');
 
-    Route::get('/reports/ledger', [ledgerReportController::class, 'index'])->name('reportLedger');
-    Route::get('/reports/ledger/{from}/{to}/{type}', [ledgerReportController::class, 'data'])->name('reportLedgerData');
-
+    Route::get('/reports/expense', [ExpenseReportController::class, 'index'])->name('reportExpense');
+    Route::get('/reports/expense-data', [ExpenseReportController::class, 'details'])->name('reportExpenseData');
 });
